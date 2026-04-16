@@ -1,0 +1,144 @@
+\documentclass[12pt]{beamer}
+% \usetheme{umbc4}
+\usetheme{moloch}
+
+\usepackage{amsmath,amscd}
+\usepackage{fontspec}
+\usepackage{unicode-math}
+\usepackage{pifont}
+\usepackage{xcolor}
+% A shade between 0.5 (gray) and 0.8 (lightgray)
+\definecolor{midgray}{rgb}{0.65, 0.65, 0.65}
+
+% Set the slide body to black background with white text
+\setbeamercolor{background canvas}{bg=black}
+\setbeamercolor{normal text}{fg=white}
+% Set the title bar to black background with white text
+\setbeamercolor{frametitle}{bg=black, fg=white}
+% Ensure other structural elements (bullets, etc.) are visible
+\setbeamercolor{structure}{fg=white}
+
+\setmainfont{Libertinus Serif}
+\setsansfont{Libertinus Sans}
+\setmathfont{STIX Two Math}
+
+\newcommand{\FrameTitle}[2]{\frametitle{#1 \hfill \small\textnormal{\textcolor{midgray}{#2}}}}
+\newcommand{\snl}{\vspace*{3pt}\\}
+\newcommand{\nl}{\vspace*{1em}\\}
+\newcommand{\vsp}{\vspace*{1em}}
+
+
+\begin{document}
+\title{\center{An Introduction to \\ Post-Quantum Cryptography \\}}
+\author{\center{Manipal School of Information Sciences \\ Manipal \\}}
+\date{\center{Friday, 24 April 2026}}
+\maketitle
+
+% \frametitle{Broad Outline \hfill \small\textnormal{\textcolor{midgray}{Introduction}}}
+\begin{frame}\FrameTitle{Broad Outline}{Introduction}
+    \begin{itemize}
+        \item[\ding{52}] Classical Cryptography
+        \item[--] Threats from Quantum Computing
+        \item[--] Mitigating Quantum Threats
+        \item[\ding{52}] Post-Quantum Cryptography
+    \end{itemize}
+    \vfill\normalsize\textit{\ding{52} involves hands-on Python programming}
+\end{frame}
+
+\begin{frame}\FrameTitle{The Plan}{Introduction}
+    \begin{itemize}
+        \item[\ding{52}] Classical Cryptography \hfill \textbf{\textasciitilde 2 hours}
+        \item[--] Threats from Quantum Computing \hfill \textbf{\textasciitilde 20 minutes}
+        \item[--] Mitigating Quantum Threats \hfill \textbf{\textasciitilde 20 minutes}
+        \item[\ding{52}] Post-Quantum Cryptography \hfill \textbf{\textasciitilde 1.5 hours}
+    \end{itemize}
+    \vfill\normalsize\textit{\ding{52} involves hands-on Python programming}
+\end{frame}
+
+\begin{frame}\FrameTitle{A General Note}{Introduction}
+    \large\textbf{Cryptography is fun because it is a blend of}
+    \begin{itemize}
+        \item[] \hspace*{2em} Mathematics
+        \item[] \hspace*{2em} Algorithms
+        \item[] \hspace*{2em} Systems Security
+        \item[] \hspace*{2em} Programming!
+    \end{itemize}
+\end{frame}
+
+\begin{frame}\FrameTitle{A General Note}{Introduction}
+    {\center{\LARGE\textbf{Do not hesitate to ask questions!}}}
+\end{frame}
+
+
+\begin{frame}\FrameTitle{Broad Details}{Introduction}
+    \begin{itemize}
+        \item Classical Cryptography \hfill \textbf{\textasciitilde 2 hours}
+        \begin{itemize}
+            \item Primitives
+            \item Protocols
+        \end{itemize}
+        \item Threats from Quantum Computing \hfill \textbf{\textasciitilde 20 minutes}
+        \item Mitigating Quantum Threats \hfill \textbf{\textasciitilde 20 minutes}
+        \item Post-Quantum Cryptography \hfill \textbf{\textasciitilde 1.5 hours}
+        \begin{itemize}
+            \item Principles of Lattice-Based Cryptography
+            \item ML-KEM and ML-DSA schemes
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}\FrameTitle{Basic Terms and Ideas}{Introduction}
+    There are a bunch of terms that we will be using repeatedly,
+    so let's try to develop an intuitive understanding of them before we dive into the details.\nl
+    \vspace*{2em}
+    These terms are not formal definitions, but they will help us understand concepts better.\nl
+
+    \vspace*{2em}
+    \large{Do not worry if you do not understand these terms fully!}
+
+\end{frame}
+
+\begin{frame}\FrameTitle{Basic Terms and Ideas}{Introduction}
+    {\large\color{yellow}{Primitives and Constructions}}\nl
+
+    -- Primitives
+    \begin{itemize}
+        \item Pseudorandom generators (PRGs)
+        \item Hash functions
+        \item Symmetric-key encryption methods
+    \end{itemize}
+    \vsp
+    -- Constructions
+    \begin{itemize}
+        \item Key Derivation functions (KDFs)
+        \item Message authentication codes (MACs)
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}\FrameTitle{Basic Terms and Ideas}{Introduction}
+    {\large\color{yellow}{Schemes and Protocols}}\nl
+
+    -- Schemes
+    \begin{itemize}
+        \item Public-key encryption
+        \item Digital signatures
+    \end{itemize}
+    \vsp
+    -- Protocols
+    \begin{itemize}
+        \item Diffie-Hellman Key exchange
+        \item Transport Layer Security (TLS)
+        \item Secure Shell (SSH)
+        \item Signal Messaging Protocol
+    \end{itemize}
+\end{frame}
+
+\begin{frame}\FrameTitle{}{Introduction}
+    \vfill
+    \center{\Huge{\textbf{Questions?}}}
+    \vfill
+    Next Session: \textbf{Hands-on Classical Cryptography}
+\end{frame}
+
+\end{document}
