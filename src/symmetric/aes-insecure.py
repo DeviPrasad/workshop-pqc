@@ -5,7 +5,10 @@ from cryptography.hazmat.primitives.ciphers import algorithms
 from cryptography.hazmat.primitives.ciphers import modes
 
 
-# key is a random 16 byte string for AES-128
+# key is a random 16 byte string for AES-128.
+# AES keys have no structure, so we can just generate random bytes for the key.
+# Compare this with PKI key generation, where the keys have a specific structure
+# because they must satisfy certain mathematical properties.
 def aes128_keygen():
     return secrets.SystemRandom().randbytes(16)
 

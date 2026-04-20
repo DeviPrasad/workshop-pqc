@@ -1,0 +1,181 @@
+\documentclass[12pt]{beamer}
+% \usetheme{umbc4}
+\usetheme{moloch}
+
+\usepackage{amsmath,amscd}
+\usepackage{fontspec}
+\usepackage{unicode-math}
+\usepackage{pifont}
+\usepackage{xcolor}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{listings}
+
+\definecolor{midgray}{rgb}{0.65, 0.65, 0.65}
+
+% Set the slide body to black background with white text
+\setbeamercolor{background canvas}{bg=black}
+\setbeamercolor{normal text}{fg=white}
+
+% Set the title bar to black background with white text
+\setbeamercolor{frametitle}{bg=black, fg=white}
+
+% Ensure other structural elements (bullets, etc.) are visible
+\setbeamercolor{structure}{fg=white}
+
+\setmainfont{Libertinus Serif}
+\setsansfont{Libertinus Sans}
+\setmathfont{STIX Two Math}
+
+\newcommand{\FrameTitle}[2]{\frametitle{#1 \hfill \small\textnormal{\textcolor{midgray}{#2}}}}
+\newcommand{\snl}{\vspace*{3pt}\\}
+\newcommand{\nl}{\vspace*{1em}\\}
+\newcommand{\vsp}{\vspace*{1em}}
+\newcommand{\vspthreept}{\vspace*{3pt}}
+
+\definecolor{VeyLightBlue}{rgb}{0.65, 0.8, 1.0}
+\definecolor{LightGreen}{rgb}{0.65, 1.0, 0.8}
+\definecolor{IceBlue}{rgb}{0.6, 0.9, 0.93}
+
+\begin{document}
+\title{\center{Basic Mathematical Definitions \\ \textit{and} \\ Using Python for Cryptography \\}}
+\author{\center{Manipal School of Information Sciences \\ Manipal \\}}
+\date{\center{Friday, 24 April 2026}}
+\maketitle
+
+% Set up customized Python listing style
+\lstdefinestyle{pythonstyle}{
+    language=Python,
+    backgroundcolor=\color{black},
+    commentstyle=\color{LightGreen},
+    basicstyle=\ttfamily\footnotesize\color{white},
+    keywordstyle=\color{VeyLightBlue},
+    stringstyle=\color{orange},
+    breaklines=false,
+    linewidth=\linewidth,
+    xleftmargin=8pt,
+    framexleftmargin=8pt,
+    numbers=left,           % Position of line numbers
+    numberstyle=\tiny,      % Size of line numbers
+    stepnumber=1,           % Numbering interval
+    numbersep=2pt,          % Distance from code
+    gobble=6,              % Remove leading spaces (adjust as needed)
+    rulecolor=\color{gray},
+    tabsize=2,               % Reduces Tab width
+    columns=fullflexible,        % Compresses character spacing
+    keepspaces=true,         % Ensures the indentation stays consistent
+    frame=lr,
+    framerule=0.5pt,          % Adjust thickness
+}
+\lstset{style=pythonstyle}
+
+\begin{frame}\FrameTitle{Rule of Exponentiation}{Math101}
+    {\huge
+    $$
+        {g^{a^{b}} = g^{b^{a}} = g^{ab}}
+    $$
+    }
+\end{frame}
+
+\begin{frame}[fragile]\FrameTitle{Exponentiation}{Math101}
+    \begin{lstlisting}
+        def exp():
+            g = 9 # generator
+            a_secret = 13
+            a_public = pow(g, a_secret) # g^a_secret
+            b_secret = 42
+            b_public = pow(g, b_secret) # g^b_secret
+            ss_alice = pow(b_public, a_secret)
+            ss_bob = pow(a_public, b_secret)
+            assert ss_alice == ss_bob
+    \end{lstlisting}
+
+    {\Large
+    $$
+        g^{a^{b}} = g^{b^{a}} = g^{ab}
+    $$
+    }
+
+\end{frame}
+
+\begin{frame}[fragile]\FrameTitle{Modular Exponentiation}{Math101}
+    \begin{lstlisting}
+        def mod_exp():
+            p = 3329 # generator
+            g = 9
+            a_secret = 13
+            a_public = pow(g, a_secret, p) # g^a_secret mod p
+            b_secret = 42
+            b_public = pow(g, b_secret, p) # g^b_secret mod p
+            ss_alice = pow(b_public, a_secret, p)
+            ss_bob = pow(a_public, b_secret, p)
+            assert ss_alice == ss_bob
+    \end{lstlisting}
+
+    {\Large
+    $$
+        g^{a^{b}} \equiv g^{b^{a}} \equiv g^{ab}  \pmod{p}
+    $$
+    }
+\end{frame}
+
+\begin{frame}\FrameTitle{Discrete Logarithm}{Math101}
+    {\huge
+    Given
+    \center{$g$, $p$, and \color{LightGreen}{$g^{\color{Apricot}{a}} \pmod{p}$ },} \nl
+    find \color{Apricot}{$a$}
+    }
+\end{frame}
+
+\begin{frame}\FrameTitle{Definitions - Function and its friends}{Math101}
+    \begin{itemize}
+        \item[] Function
+        \item[] Domain
+        \item[] Codomain
+        \item[] Range
+    \end{itemize}
+
+    \textbf{Function} is a mapping from a \textit{domain} to a \textit{codomain}.\nl
+    \textbf{Range} is the subset of the codomain that is \textit{actually} mapped to by the function.
+\end{frame}
+
+\begin{frame}\FrameTitle{Definitions - Image and Preimage}{Math101}
+    Image of a function $f$ is the set of all outputs of $f$.\nl
+    Preimage of a function $f$ is the set of all inputs that map to a given output of $f$.
+\end{frame}
+
+\begin{frame}\FrameTitle{Definitions - Second Preimage}{Math101}
+    Given a function $f$ and an input $x$, a \textbf{second preimage} of $x$ is an input $x' \neq x$ such that $f(x) = f(x')$.
+\end{frame}
+
+\begin{frame}\FrameTitle{Definitions - One Way Function}{Math101}
+    A \textbf{one-way function} is a function that is easy to compute but hard to invert.\nl
+    \vspace*{1em}
+    More formally, a function $f$ is a one-way function if:
+    \begin{itemize}
+        \item $f$ can be computed in polynomial time.
+        \item For every probabilistic polynomial-time algorithm $A$, the probability that $A(f(x))$
+            outputs a preimage of $f(x)$ is negligible.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}\FrameTitle{Hash Functions}{Math101}
+    A \textbf{hash function} is a function that maps data of arbitrary size to a fixed-size value.\nl
+    \vspace*{1em}
+    A \textbf{cryptographic hash function} is a hash function that has the following properties:
+    \begin{itemize}
+        \item It is easy to compute the hash value for any given input.
+        \item It is infeasible to generate a valid input that has a given hash value.
+        \item It is infeasible to find two different inputs that produce the same hash value.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}\FrameTitle{Random Number Generator}{Math101}
+    A \textbf{cryptographically secure pseudorandom number generator} (CSPRNG)
+    is a pseudorandom number generator that has the following properties:
+    \begin{itemize}
+        \item It is computationally indistinguishable from a true random number generator.
+        \item It is resistant to state compromise extensions, meaning that even if an attacker
+                learns the internal state of the generator at some point, they cannot predict future outputs.
+    \end{itemize}
+\end{frame}
+\end{document}

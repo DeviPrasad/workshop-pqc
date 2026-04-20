@@ -7,14 +7,17 @@
 \usepackage{unicode-math}
 \usepackage{pifont}
 \usepackage{xcolor}
-% A shade between 0.5 (gray) and 0.8 (lightgray)
+\usepackage[dvipsnames]{xcolor}
+
 \definecolor{midgray}{rgb}{0.65, 0.65, 0.65}
 
 % Set the slide body to black background with white text
 \setbeamercolor{background canvas}{bg=black}
 \setbeamercolor{normal text}{fg=white}
+
 % Set the title bar to black background with white text
 \setbeamercolor{frametitle}{bg=black, fg=white}
+
 % Ensure other structural elements (bullets, etc.) are visible
 \setbeamercolor{structure}{fg=white}
 
@@ -34,13 +37,12 @@
 \date{\center{Friday, 24 April 2026}}
 \maketitle
 
-% \frametitle{Broad Outline \hfill \small\textnormal{\textcolor{midgray}{Introduction}}}
 \begin{frame}\FrameTitle{Broad Outline}{Introduction}
     \begin{itemize}
         \item[\ding{52}] Classical Cryptography
         \item[--] Threats from Quantum Computing
-        \item[--] Mitigating Quantum Threats
-        \item[\ding{52}] Post-Quantum Cryptography
+        \item[--] Mitigating the Quantum Threats
+        \item[\ding{52}] Post-Quantum Cryptography (PQC)
     \end{itemize}
     \vfill\normalsize\textit{\ding{52} involves hands-on Python programming}
 \end{frame}
@@ -49,11 +51,31 @@
     \begin{itemize}
         \item[\ding{52}] Classical Cryptography \hfill \textbf{\textasciitilde 2 hours}
         \item[--] Threats from Quantum Computing \hfill \textbf{\textasciitilde 20 minutes}
-        \item[--] Mitigating Quantum Threats \hfill \textbf{\textasciitilde 20 minutes}
+        \item[--] Mitigating the Quantum Threats \hfill \textbf{\textasciitilde 20 minutes}
         \item[\ding{52}] Post-Quantum Cryptography \hfill \textbf{\textasciitilde 1.5 hours}
     \end{itemize}
     \vfill\normalsize\textit{\ding{52} involves hands-on Python programming}
 \end{frame}
+
+\begin{frame}\FrameTitle{The Plan - Details}{Introduction}
+    \begin{itemize}
+        \item Classical Cryptography \hfill \textbf{\textasciitilde 2 hours}
+        \begin{itemize}
+            \item Primitives
+            \item Protocols
+            \item Computational Hardness Assumptions
+        \end{itemize} \vsp
+        \item Threats from Quantum Computing \hfill \textbf{\textasciitilde 20 minutes} \vsp
+        \item Mitigating the Quantum Threats \hfill \textbf{\textasciitilde 20 minutes} \vsp
+        \item Post-Quantum Cryptography \hfill \textbf{\textasciitilde 1.5 hours}
+        \begin{itemize}
+            \item Quantum-Resistant Computational Problems
+            \item Principles of Lattice-Based Cryptography
+            \item ML-KEM and ML-DSA schemes
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
 
 \begin{frame}\FrameTitle{A General Note}{Introduction}
     \large\textbf{Cryptography is fun because it is a blend of}
@@ -69,23 +91,44 @@
     {\center{\LARGE\textbf{Do not hesitate to ask questions!}}}
 \end{frame}
 
+\begin{frame}\FrameTitle{But Wait...}{Introduction}
+    \center{\Huge\textbf{\color{Apricot}{Why should I care?}}\\}
+\end{frame}
 
-\begin{frame}\FrameTitle{Broad Details}{Introduction}
+\begin{frame}\FrameTitle{But Wait... Why Should I Care?}{Introduction}
+    {\Large{\textbf{Cryptography is pervasive}}}\nl
+
     \begin{itemize}
-        \item Classical Cryptography \hfill \textbf{\textasciitilde 2 hours}
-        \begin{itemize}
-            \item Primitives
-            \item Protocols
-        \end{itemize}
-        \item Threats from Quantum Computing \hfill \textbf{\textasciitilde 20 minutes}
-        \item Mitigating Quantum Threats \hfill \textbf{\textasciitilde 20 minutes}
-        \item Post-Quantum Cryptography \hfill \textbf{\textasciitilde 1.5 hours}
-        \begin{itemize}
-            \item Principles of Lattice-Based Cryptography
-            \item ML-KEM and ML-DSA schemes
-        \end{itemize}
+        \item[--] Aadhaar
+        \item[--] UPI
+        \item[--] TLS (HTTPS)
+        \item[--] WhatsApp/Signal
+        \item[--] VPNs
+        \item[--] SSH
+        \item[--] GitHub
+        \item[--] Cryptocurrencies
     \end{itemize}
 \end{frame}
+
+\begin{frame}\FrameTitle{The Indian Context}{Introduction}
+    {\Large{\textbf{PQC Readiness In the Works...}}}\nl
+
+    NITI Aayog's Roadmap.\\
+    {\color{Dandelion}{\texttt{niti\_roadmap\_quantum\_powered\_economy.pdf}}}\nl
+
+    DST's Report\\
+    {\color{Dandelion}{\texttt{dst\_quantum\_safe\_ecosystem.pdf}}}\nl
+
+    Society for Electronic Transactions and Security.\\
+    {\color{Dandelion}{\texttt{pki\_pqc\_india.pdf}}}\nl
+
+    CERT-In and SISA Whitepaper.\\
+    {\color{Dandelion}{\texttt{certin\_quantum\_readiness.pdf}}}\nl
+
+    UIDAI Enrollment Data Security.\vsp
+
+\end{frame}
+
 
 \begin{frame}\FrameTitle{Basic Terms and Ideas}{Introduction}
     There are a bunch of terms that we will be using repeatedly,
@@ -94,30 +137,29 @@
     These terms are not formal definitions, but they will help us understand concepts better.\nl
 
     \vspace*{2em}
-    \large{Do not worry if you do not understand these terms fully!}
-
+    {\large Don't worry if you don't understand all the terms.}
 \end{frame}
 
 \begin{frame}\FrameTitle{Basic Terms and Ideas}{Introduction}
-    {\large\color{yellow}{Primitives and Constructions}}\nl
+    {\large\color{Apricot}{Primitives and Constructions}}\nl
 
     -- Primitives
     \begin{itemize}
-        \item Pseudorandom generators (PRGs)
+        \item Pseudorandom Generators (PRGs)
         \item Hash functions
         \item Symmetric-key encryption methods
     \end{itemize}
     \vsp
     -- Constructions
     \begin{itemize}
-        \item Key Derivation functions (KDFs)
-        \item Message authentication codes (MACs)
+        \item Key Derivation Functions (KDFs)
+        \item Message Authentication Codes (MACs)
     \end{itemize}
 
 \end{frame}
 
 \begin{frame}\FrameTitle{Basic Terms and Ideas}{Introduction}
-    {\large\color{yellow}{Schemes and Protocols}}\nl
+    {\large\color{Apricot}{Schemes and Protocols}}\nl
 
     -- Schemes
     \begin{itemize}
@@ -127,7 +169,7 @@
     \vsp
     -- Protocols
     \begin{itemize}
-        \item Diffie-Hellman Key exchange
+        \item Diffie-Hellman Key Exchange
         \item Transport Layer Security (TLS)
         \item Secure Shell (SSH)
         \item Signal Messaging Protocol
