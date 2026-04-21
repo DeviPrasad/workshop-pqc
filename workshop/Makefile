@@ -14,5 +14,5 @@ all: basic qthreats outline
 	echo "Done!"
 	
 clean:
-	@rm -f *.aux *.log *.snm *.out *.toc *.nav
+	@rm -f *.aux *.log *.snm *.out *.toc *.nav *.vrb
 
