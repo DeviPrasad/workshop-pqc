@@ -80,13 +80,15 @@
     \begin{lstlisting}
         def exp():
             g = 9 # generator
-            a_secret = 13
-            a_public = pow(g, a_secret) # g^a_secret
-            b_secret = 42
-            b_public = pow(g, b_secret) # g^b_secret
-            ss_alice = pow(b_public, a_secret)
-            ss_bob = pow(a_public, b_secret)
-            assert ss_alice == ss_bob
+            a = 13 # a's secret key (aka private key)
+            a_public = pow(g, a) # g^a
+            b = 42 # b's secret key
+            b_public = pow(g, b) # g^b
+            # @a shares their public key `a_public` with @b
+            ss_b = pow(a_public, b_secret)
+            # @b shares their public key `b_public` with @a
+            ss_a = pow(b_public, a_secret)
+            assert ss_a == ss_b
     \end{lstlisting}
 
     {\Large
@@ -100,8 +102,8 @@
 \begin{frame}[fragile]\FrameTitle{Modular Exponentiation}{Math101}
     \begin{lstlisting}
         def mod_exp():
-            p = 3329 # generator
-            g = 9
+            p = 3329 # prime modulus
+            g = 9 # generator
             a_secret = 13
             a_public = pow(g, a_secret, p) # g^a_secret mod p
             b_secret = 42
