@@ -1,3 +1,7 @@
+pqc:
+	xelatex pqc.tex
+	open pqc.pdf
+
 basic:
 	xelatex basic-math.tex
 	open basic-math.pdf
