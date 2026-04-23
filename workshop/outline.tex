@@ -102,11 +102,12 @@
 \end{frame}
 
 \begin{frame}\FrameTitle{But Wait...}{Introduction}
-    \center{\Huge\textbf{\color{Apricot}{Why should I care?}}\\}
+    %\center{\Huge\textbf{\color{Apricot}{Why should I care?}}\\}
+    \center{\includegraphics[width=0.95\textwidth]{images/why-care.png}}
 \end{frame}
 
-\begin{frame}\FrameTitle{But Wait... Why Should I Care?}{Introduction}
-    {\Large{\textbf{Cryptography is pervasive}}}\nl
+\begin{frame}\FrameTitle{\color{Apricot}{Why Should I Care?}}{Introduction}
+    {\Large{\text{Cryptography is pervasive}}}\nl
 
     \begin{itemize}
         \item[--] Aadhaar
@@ -120,20 +121,16 @@
     \end{itemize}
 \end{frame}
 
-
-\begin{frame}\FrameTitle{Getting Started...}{Introduction}
-    Let's develop an intuitive understanding of a bunch of terms that we will be using repeatedly.\nl
-    \vspace*{2em}
-
-    These terms are not formal definitions, but they will help us understand concepts better.\nl
-
-    We will use simple math ideas and notation.\nl
-
-    \vspace*{2em}
-    {\large Don't worry if you don't understand all the terms.}
+\begin{frame}\FrameTitle{Why Should I Care?}{Introduction}
+    \large {It is believed that the \textit{quantum devices} of the future
+            have the computational power to break cryptography schemes
+            based on asymmetric/public key methods.}\nl
+    \vspace*{1em}
+    \large {Today, we will learn a few ideas that are meant to protect \textit{classical}
+            cryptography from \textit{quantum adversaries}.}
 \end{frame}
 
-\begin{frame}\FrameTitle{Jargon Buster}{Introduction}
+\begin{frame}\FrameTitle{Demystifying the Buzz}{Introduction}
     Classical Computers and Algorithms\nl
     \vspace*{0.5em}
     Quantum Computers and Quantum Algorithms\nl
@@ -141,45 +138,8 @@
     Post-Quantum Cryptography (PQC)\vspace*{2pt}
     \begin{itemize}
         \item[--] It is \textbf{NOT post-quantum computing}
-        \item[--] It is \textit{simply} post-quantum cryptography.
+        \item[--] It is \textit{simply} post-quantum cryptography
         \item[--] You \textbf{\textit{don't}} need a quantum computer to do PQC!
-    \end{itemize}
-\end{frame}
-
-
-\begin{frame}\FrameTitle{Basic Terms and Ideas}{Introduction}
-    {\large\color{Apricot}{Primitives and Constructions}}\nl
-
-    -- Primitives
-    \begin{itemize}
-        \item Pseudorandom Generators (PRGs)
-        \item Hash functions
-        \item Symmetric-key encryption methods
-    \end{itemize}
-    \vsp
-    -- Constructions
-    \begin{itemize}
-        \item Key Derivation Functions (KDFs)
-        \item Message Authentication Codes (MACs)
-    \end{itemize}
-
-\end{frame}
-
-\begin{frame}\FrameTitle{Basic Terms and Ideas}{Introduction}
-    {\large\color{Apricot}{Schemes and Protocols}}\nl
-
-    -- Schemes
-    \begin{itemize}
-        \item Public-key encryption
-        \item Digital signatures
-    \end{itemize}
-    \vsp
-    -- Protocols
-    \begin{itemize}
-        \item Diffie-Hellman Key Exchange
-        \item Transport Layer Security (TLS)
-        \item Secure Shell (SSH)
-        \item Signal Messaging Protocol
     \end{itemize}
 \end{frame}
 
@@ -198,9 +158,60 @@
     CERT-In and SISA Whitepaper.\\
     {\color{Dandelion}{\texttt{certin\_quantum\_readiness.pdf}}}\nl
 
-    UIDAI Enrollment Data Security.\vsp
+    \vfill \textsuperscript{\textdagger}\scriptsize\texttt{PDF documents are available in the \textbf{ref} directory}
 \end{frame}
 
+\begin{frame}\FrameTitle{Getting Started...}{Introduction}
+    \includegraphics[width=0.9\textwidth]{images/generic-protocol.png}
+
+    \vspace*{1em}
+    {\large Don't worry if you don't understand all the terms!}
+\end{frame}
+
+
+\begin{frame}\FrameTitle{Basic Terms and Ideas}{Introduction}
+    {\large\color{Apricot}{Primitives and Constructions}}\nl
+
+    -- Primitives
+    \begin{itemize}
+        \item Pseudorandom Generators (PRGs)
+        \item Hash functions
+    \end{itemize}
+    \vsp
+    -- Constructions
+    \begin{itemize}
+        \item Key Derivation Functions (KDFs)
+        \item Message Authentication Codes (MACs)
+    \end{itemize}
+\end{frame}
+
+\begin{frame}\FrameTitle{Basic Terms and Ideas}{Introduction}
+    {\large\color{Apricot}{Schemes and Protocols}}\nl
+
+    -- Schemes
+    \begin{itemize}
+        \item Digital signatures
+        \item Symmetric-key encryption methods
+        \item Public-key encryption
+    \end{itemize}
+    \vsp
+    -- Protocols
+    \begin{itemize}
+        \item Diffie-Hellman Key Exchange
+        \item Transport Layer Security (TLS)
+        \item Signal (\textit{and} Whatsapp) Messaging Protocol
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}\FrameTitle{A Sample Protocol - TLS 1.3}{Introduction}
+    \href{https://www.rfc-editor.org/rfc/rfc8446.html\#appendix-B.4}{Cipher Suites}\nl
+    \href{https://www.rfc-editor.org/rfc/rfc8446.html\#appendix-B.3.1.3}{Signature Algorithms}\nl
+    \href{https://www.rfc-editor.org/rfc/rfc8446.html\#section-7.4.2}{Diffie-Hellman}\nl
+    \vspace*{1em}
+    \href{https://www.rfc-editor.org/rfc/rfc8446.html\#page-93}{Key Schedule}\nl
+
+\end{frame}
 
 \begin{frame}\FrameTitle{}{Introduction}
     \vfill
